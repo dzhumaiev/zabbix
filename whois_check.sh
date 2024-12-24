@@ -1,6 +1,9 @@
 #!/bin/bash
+
+# added Until to handle .sk TLD expiry date
+
 expiry_date=$(whois $1 | \
-grep -Ei 'Expire|Expires|Expiry|expiration|expire|expiry' | \
+grep -Ei 'Expire|Expires|Expiry|expiration|expire|expiry|Until' | \
 sed -En 's/.*([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p' | head -1)
 
 # Calculate the difference in seconds between the expiry date and the current date
