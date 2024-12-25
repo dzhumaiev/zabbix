@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# added Until to handle .sk TLD expiry date
+# run as # ./whois_check.sh domain.name
 
 expiry_date=$(whois $1 | \
-grep -Ei 'Expire|Expires|Expiry|expiration|expire|expiry|Until' | \
+grep -Ei 'Expire|Expires|Expiry|expiration|expire|expiry|expires|Until' | \
 sed -En 's/.*([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p' | head -1)
 
 # Calculate the difference in seconds between the expiry date and the current date
